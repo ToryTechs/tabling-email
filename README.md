@@ -16,3 +16,8 @@ Ok so what if we just have 1 human being enter the detais once and then generate
 Maybe...
 
 [How to add events to a calendar](https://www.quora.com/How-do-I-automatically-add-events-to-a-Google-Calendar-from-a-Google-Sheet?share=1)
+
+###Resources
+
+The 'Parliamentary Deadline' [Google Calender](https://docs.google.com/spreadsheets/d/1lQo7VX_3qOS7_ZbVX-1CVxMVAtACt7gnTGI54o5pd0k/edit?usp=sharing)
+
