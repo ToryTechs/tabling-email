@@ -25,6 +25,7 @@ function getPdfPath() {
             const resp = await axios({ url: rotaUrl, method: 'get', responseType: "arraybuffer" });
             writeFileSync(pdfPath, resp.data);
             resolve(pdfPath);
+            rotaLastFetched = Date.now();
         }
     });
 }
