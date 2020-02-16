@@ -1,17 +1,40 @@
 ///<reference path="./types.d.ts" />
 
-import { readFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 import { join } from 'path';
 import pdf2html from 'pdf2html';
 import ical from 'ical-generator';
 import moment from 'moment';
+import { tmpdir } from 'os';
+import axios from 'axios';
 
 const dayNames = 'MondayTuesdayWednesdayThursdayFridaySaturdaySunday'
 
-export function getIcal(): Promise<ical.ICalCalendar> {
-    return new Promise((resolve, reject) => {
+const rotaUrl = `https://www.parliament.uk/documents/commons-table-office/OralQuestionsRota.pdf`;
+let rotaLastFetched: number;
 
-        pdf2html.text(join(process.cwd(), 'OralQuestionsRota.pdf'),
+const threeHours = 1000 * 60 * 60 * 3;
+function getPdfPath() {
+    const pdfPath = join(tmpdir(), 'OralQuestionsRota.pdf');
+    return new Promise(async (resolve, reject) => {
+        if (rotaLastFetched && (rotaLastFetched > (Date.now() - threeHours))) {
+            console.log(`Reusing PDF file from [${new Date(rotaLastFetched)}]`);
+            resolve(pdfPath);
+        } else {
+            console.log(`Fetching PDF from [${rotaUrl}]`);
+            const resp = await axios({ url: rotaUrl, method: 'get', responseType: "arraybuffer" });
+            writeFileSync(pdfPath, resp.data);
+            resolve(pdfPath);
+        }
+    });
+}
+
+export function getIcal(): Promise<ical.ICalCalendar> {
+    return new Promise(async (resolve, reject) => {
+        const pdfPath = await getPdfPath();
+
+        pdf2html.text(
+            pdfPath,
             (err: any, text: string) => {
                 if (err) {
                     console.error(`Failed to extract text:`, err);
