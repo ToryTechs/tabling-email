@@ -1,0 +1,39 @@
+{
+  "name": "tabling-email",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node-dev src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToryTechs/tabling-email.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToryTechs/tabling-email/issues"
+  },
+  "homepage": "https://github.com/ToryTechs/tabling-email#readme",
+  "dependencies": {
+    "@types/cheerio": "^0.22.16",
+    "@types/express": "^4.17.2",
+    "@types/moment": "^2.13.0",
+    "@types/morgan": "^1.7.37",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "ical-generator": "^1.9.2",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "pdf2html": "^2.5.0",
+    "pdfreader": "^1.0.6",
+    "ts-node": "^8.6.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.7.5"
+  }
+}
