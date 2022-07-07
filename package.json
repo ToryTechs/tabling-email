@@ -29,7 +29,7 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "ical-generator": "^1.9.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "morgan": "^1.9.1",
     "pdf2html": "^2.5.0",
     "pdfreader": "^1.0.6",
